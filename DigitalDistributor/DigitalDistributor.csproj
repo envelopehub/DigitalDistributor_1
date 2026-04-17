@@ -9,10 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Data\" />
     <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Models\MediaContent.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+    <Compile Update="ViewModels\CatalogViewModel.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
   </ItemGroup>
 
 </Project>
