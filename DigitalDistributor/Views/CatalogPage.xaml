@@ -1,0 +1,13 @@
+﻿<Page x:Class="DigitalDistributor.Views.CatalogPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Каталог">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="Магазин цифрового контенту" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+        <Button Content="The Witcher 3: Wild Hunt" Height="40" Margin="0,5" Click="BtnItem_Click"/>
+        <Button Content="Cyberpunk 2077" Height="40" Margin="0,5" Click="BtnItem_Click"/>
+        <Button Content="Adobe Photoshop 2024" Height="40" Margin="0,5" Click="BtnItem_Click"/>
+    </StackPanel>
+</Page>

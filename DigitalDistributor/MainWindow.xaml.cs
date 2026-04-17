@@ -8,39 +8,40 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+    using DigitalDistributor.Views; 
 
 namespace DigitalDistributor
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new CatalogPage());
         }
 
         private void BtnCatalog_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Loading Catalog...");
-            // На наступних етапах тут буде: MainFrame.Navigate(new CatalogPage());
+            MainFrame.Navigate(new CatalogPage());
         }
 
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown(); // Закриття програми 
-        }
-        // Додай ці методи поруч із BtnCatalog_Click
         private void BtnLibrary_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Loading My Library...");
+            MainFrame.Navigate(new LibraryPage());
         }
 
         private void BtnAdmin_Click(object sender, RoutedEventArgs e)
         {
-            // Пізніше тут буде перевірка на роль Адміна
-            MessageBox.Show("Loading Admin Panel...");
+            MainFrame.Navigate(new AdminPage());
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 
