@@ -5,12 +5,10 @@ namespace DigitalDistributor.ViewModels
 {
     public class CatalogViewModel
     {
-        // Колекція, яка автоматично оновлює UI при додаванні/видаленні елементів
         public ObservableCollection<MediaContent> ContentList { get; set; }
 
         public CatalogViewModel()
         {
-            // Поки що заповнимо тестовими даними (пізніше будемо читати з JSON)
             ContentList = new ObservableCollection<MediaContent>
             {
                 new MediaContent { Title = "The Witcher 3: Wild Hunt", Genre = "RPG", Price = 599.99m, Type = ContentType.Game },
