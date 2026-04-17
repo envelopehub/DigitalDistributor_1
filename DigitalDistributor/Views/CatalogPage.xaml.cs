@@ -13,13 +13,10 @@ namespace DigitalDistributor.Views
 
         private void BtnItem_Click(object sender, RoutedEventArgs e)
         {
-            // Отримуємо кнопку, на яку натиснули
             Button clickedButton = (Button)sender;
 
-            // Отримуємо назву товару (текст з кнопки)
             string itemName = clickedButton.Content.ToString() ?? "Невідомий товар";
 
-            // Виконуємо перехід, передаючи назву в конструктор ContentDetailsPage
             NavigationService.Navigate(new ContentDetailsPage(itemName));
         }
     }
