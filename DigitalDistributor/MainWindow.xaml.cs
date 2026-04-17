@@ -20,5 +20,28 @@ namespace DigitalDistributor
         {
             InitializeComponent();
         }
+
+        private void BtnCatalog_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Loading Catalog...");
+            // На наступних етапах тут буде: MainFrame.Navigate(new CatalogPage());
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown(); // Закриття програми 
+        }
+        // Додай ці методи поруч із BtnCatalog_Click
+        private void BtnLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Loading My Library...");
+        }
+
+        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            // Пізніше тут буде перевірка на роль Адміна
+            MessageBox.Show("Loading Admin Panel...");
+        }
     }
+
 }
