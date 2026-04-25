@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -9,11 +9,13 @@ namespace DigitalDistributor.Models
     // Реалізуємо INotifyPropertyChanged для оновлення UI в реальному часі
     public class MediaContent : INotifyPropertyChanged
     {
-        private Guid _id = Guid.NewGuid();
-        private string _title = string.Empty;
-        private string _genre = string.Empty;
+        private Guid    _id          = Guid.NewGuid();
+        private string  _title       = string.Empty;
+        private string  _genre       = string.Empty;
+        private string  _description = string.Empty;
         private decimal _price;
         private ContentType _type;
+        private string  _imageColor  = "#2980B9"; // колір-заглушка картки
 
         public Guid Id
         {
@@ -33,6 +35,12 @@ namespace DigitalDistributor.Models
             set { _genre = value; OnPropertyChanged(); }
         }
 
+        public string Description
+        {
+            get => _description;
+            set { _description = value; OnPropertyChanged(); }
+        }
+
         public decimal Price
         {
             get => _price;
@@ -45,8 +53,24 @@ namespace DigitalDistributor.Models
             set { _type = value; OnPropertyChanged(); }
         }
 
-        // Подія, яка сповіщає XAML про зміну значення
+        // Колір фону для картки-заглушки
+        public string ImageColor
+        {
+            get => _imageColor;
+            set { _imageColor = value; OnPropertyChanged(); }
+        }
+
+        // Іконка типу для відображення
+        public string TypeIcon => Type switch
+        {
+            ContentType.Game     => "🎮",
+            ContentType.Movie    => "🎬",
+            ContentType.Software => "💻",
+            _ => "📦"
+        };
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string name = null!)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

@@ -1,0 +1,104 @@
+<Page x:Class="DigitalDistributor.Views.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Налаштування">
+
+    <Grid Background="{DynamicResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="{DynamicResource PageHeaderBg}" Padding="24,20"
+                BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,0,1">
+            <TextBlock Text="{DynamicResource m_SettingsPage}"
+                       Style="{StaticResource HeaderText}" Margin="0"/>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30,24" MaxWidth="620" HorizontalAlignment="Left">
+
+                <!-- Картка профілю -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="10"
+                        Padding="24" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource m_Profile}"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SecondaryColor}"
+                                   Margin="0,0,0,16"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="52" Height="52" CornerRadius="26"
+                                    Background="{DynamicResource PrimaryColor}"
+                                    Margin="0,0,16,0">
+                                <TextBlock x:Name="TxtInitial" FontSize="22" FontWeight="Bold"
+                                           Foreground="White" HorizontalAlignment="Center"/>
+                            </Border>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock x:Name="TxtLoginName" FontSize="18"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource SecondaryColor}"/>
+                                <TextBlock x:Name="TxtRoleName" FontSize="13"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           Margin="0,4,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Картка теми -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="10"
+                        Padding="24" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource m_Theme}"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SecondaryColor}"
+                                   Margin="0,0,0,12"/>
+
+                        <TextBlock Text="{DynamicResource m_SelectTheme}"
+                                   Style="{StaticResource FormLabel}" Margin="0,0,0,6"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="{DynamicResource m_ThemeLight}"
+                                    Click="BtnTheme_Click" Tag="Light"
+                                    Width="120" Margin="0,0,10,0"/>
+                            <Button Content="{DynamicResource m_ThemeDark}"
+                                    Click="BtnTheme_Click" Tag="Dark"
+                                    Width="120" Margin="0,0,10,0"
+                                    Style="{StaticResource SecondaryButton}"/>
+                            <Button Content="{DynamicResource m_ThemePurple}"
+                                    Click="BtnTheme_Click" Tag="Purple"
+                                    Width="120"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Картка мови -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="10"
+                        Padding="24" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource m_Language}"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SecondaryColor}"
+                                   Margin="0,0,0,12"/>
+
+                        <TextBlock Text="{DynamicResource m_SelectLanguage}"
+                                   Style="{StaticResource FormLabel}" Margin="0,0,0,6"/>
+
+                        <ComboBox x:Name="CmbLanguage" Width="220"
+                                  HorizontalAlignment="Left"
+                                  SelectionChanged="CmbLanguage_SelectionChanged">
+                            <ComboBoxItem Content="🇺🇦  Українська" Tag="uk-UA" IsSelected="True"/>
+                            <ComboBoxItem Content="🇬🇧  English"    Tag="en-US"/>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

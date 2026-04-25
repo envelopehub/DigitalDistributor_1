@@ -1,42 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DigitalDistributor.Views;
+using DigitalDistributor.Models;
+using DigitalDistributor.Services;
 
 namespace DigitalDistributor.Views
 {
-    /// <summary>
-    /// Interaction logic for ContentDetailsPage.xaml
-    /// </summary>
     public partial class ContentDetailsPage : Page
     {
-        public ContentDetailsPage(string contentName)
+        private MediaContent _content;
+
+        public ContentDetailsPage(MediaContent content)
         {
             InitializeComponent();
+            _content = content;
 
-            // Встановлюємо переданий текст у наш TextBlock
-            TxtTitle.Text = $"Деталі: {contentName}";
+            // Прив'язуємо весь об'єкт як DataContext для Binding у XAML
+            this.DataContext = content;
+
+            // Заповнюємо текстові поля вручну (можна і через Binding)
+            TxtTitle.Text       = content.Title;
+            TxtGenre.Text       = content.Genre;
+            TxtDescription.Text = string.IsNullOrWhiteSpace(content.Description)
+                ? "Опис відсутній."
+                : content.Description;
+            TxtPrice.Text       = $"{content.Price:C}";
+            TxtType.Text        = content.Type switch
+            {
+                ContentType.Game     => "🎮  Гра",
+                ContentType.Movie    => "🎬  Фільм",
+                ContentType.Software => "💻  Програма",
+                _ => "📦  Інше"
+            };
         }
 
-        // Обробник кнопки "Назад"
+        // Кнопка "Придбати"
+        private void BtnBuy_Click(object sender, RoutedEventArgs e)
+        {
+            // Додаємо до бібліотеки поточного користувача
+            LibraryService.AddToLibrary(_content);
+
+            BtnBuy.Content    = "✓ Додано до бібліотеки";
+            BtnBuy.IsEnabled  = false;
+
+            MessageBox.Show($"'{_content.Title}' успішно додано до вашої бібліотеки!",
+                "Покупка", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            // Перевіряємо, чи є куди повертатися в історії Frame
             if (NavigationService.CanGoBack)
-            {
                 NavigationService.GoBack();
-            }
         }
     }
 }

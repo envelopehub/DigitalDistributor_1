@@ -1,0 +1,168 @@
+<Page x:Class="DigitalDistributor.Views.AboutPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Про програму">
+
+    <Grid Background="{DynamicResource BackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Шапка -->
+        <Border Grid.Row="0" Background="{DynamicResource PageHeaderBg}" Padding="24,20"
+                BorderBrush="{DynamicResource BorderColor}" BorderThickness="0,0,0,1">
+            <TextBlock Text="{DynamicResource m_AboutPage}"
+                       Style="{StaticResource HeaderText}" Margin="0"/>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40,30" MaxWidth="700" HorizontalAlignment="Left">
+
+                <!-- Логотип та назва -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="12"
+                        Padding="32,28" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1" Margin="0,0,0,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Іконка -->
+                        <Border Width="80" Height="80" CornerRadius="16"
+                                Background="{DynamicResource PrimaryColor}"
+                                Margin="0,0,24,0">
+                            <TextBlock Text="🎮" FontSize="40"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{DynamicResource m_AppTitle}"
+                                       FontSize="26" FontWeight="Bold"
+                                       Foreground="{DynamicResource SecondaryColor}"/>
+                            <TextBlock Text="{DynamicResource m_AboutVersion}"
+                                       FontSize="13" Foreground="{DynamicResource PrimaryColor}"
+                                       FontWeight="SemiBold" Margin="0,4,0,8"/>
+                            <TextBlock Text="{DynamicResource m_AboutDescription}"
+                                       FontSize="13" Foreground="{DynamicResource TextSecondary}"
+                                       TextWrapping="Wrap" LineHeight="20"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!-- Можливості -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="12"
+                        Padding="28,24" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock Text="{DynamicResource m_AboutFeatures}"
+                                   FontSize="16" FontWeight="SemiBold"
+                                   Foreground="{DynamicResource SecondaryColor}"
+                                   Margin="0,0,0,16"/>
+
+                        <TextBlock Text="{DynamicResource m_AboutF1}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                        <TextBlock Text="{DynamicResource m_AboutF2}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                        <TextBlock Text="{DynamicResource m_AboutF3}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                        <TextBlock Text="{DynamicResource m_AboutF4}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                        <TextBlock Text="{DynamicResource m_AboutF5}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                        <TextBlock Text="{DynamicResource m_AboutF6}"
+                                   Foreground="{DynamicResource TextColor}"
+                                   Margin="0,4"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Технічна інформація -->
+                <Border Background="{DynamicResource CardBackground}" CornerRadius="12"
+                        Padding="28,24" BorderBrush="{DynamicResource BorderColor}"
+                        BorderThickness="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Ліва колонка -->
+                        <StackPanel>
+                            <TextBlock Text="{DynamicResource m_AboutTech}"
+                                       FontSize="16" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource SecondaryColor}"
+                                       Margin="0,0,0,16"/>
+
+                            <StackPanel Margin="0,0,0,10">
+                                <TextBlock Text="Platform" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="WPF / .NET 8" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,10">
+                                <TextBlock Text="Language" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="C# 12" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="UI" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="XAML + MVVM" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <!-- Права колонка -->
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="{DynamicResource m_AboutAuthor}"
+                                       FontSize="16" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource SecondaryColor}"
+                                       Margin="0,0,0,16"/>
+
+                            <StackPanel Margin="0,0,0,10">
+                                <TextBlock Text="IDE" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="Visual Studio 2022" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,0,0,10">
+                                <TextBlock Text="Storage" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="JSON (System.Text.Json)" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="{DynamicResource m_AboutYear}"
+                                           FontWeight="SemiBold"
+                                           Foreground="{DynamicResource TextSecondary}"
+                                           FontSize="11"/>
+                                <TextBlock Text="2026" FontSize="14"
+                                           Foreground="{DynamicResource TextColor}"
+                                           Margin="0,2"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

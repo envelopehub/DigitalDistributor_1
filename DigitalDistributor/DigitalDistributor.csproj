@@ -10,11 +10,17 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Models\MediaContent.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+    <Compile Update="Models\User.cs">
       <Generator>MSBuild:Compile</Generator>
     </Compile>
     <Compile Update="ViewModels\CatalogViewModel.cs">

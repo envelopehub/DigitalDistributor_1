@@ -1,34 +1,97 @@
-﻿<Window x:Class="DigitalDistributor.MainWindow"
+<Window x:Class="DigitalDistributor.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Digital Distributor v1.0" 
-        Height="650" Width="1100"
-        MinHeight="500" MinWidth="800"
+        Title="Digital Distributor"
+        Height="680" Width="1150"
+        MinHeight="520" MinWidth="860"
         WindowStartupLocation="CenterScreen">
 
-    <DockPanel LastChildFill="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <Border DockPanel.Dock="Top" Background="#1A252F" Height="40" Padding="15,0">
-            <TextBlock Text="DigitalDistributor: Робоча область" 
-                       Foreground="#BDC3C7" 
-                       VerticalAlignment="Center" 
-                       FontWeight="SemiBold"/>
+        <!-- ===== БІЧНА ПАНЕЛЬ ===== -->
+        <Border Grid.Column="0" Background="{DynamicResource SidebarBg}">
+            <DockPanel>
+
+                <!-- Лого та профіль -->
+                <Border DockPanel.Dock="Top" Padding="20,24,20,20"
+                        BorderBrush="{DynamicResource SidebarHover}"
+                        BorderThickness="0,0,0,1">
+                    <StackPanel>
+                        <TextBlock Text="🎮 Digital" FontSize="18" FontWeight="Bold"
+                                   Foreground="White"/>
+                        <TextBlock Text="Distributor" FontSize="18" FontWeight="Bold"
+                                   Foreground="{DynamicResource PrimaryColor}"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                            <Border Width="32" Height="32" CornerRadius="16"
+                                    Background="{DynamicResource PrimaryColor}"
+                                    Margin="0,0,10,0">
+                                <TextBlock x:Name="TxtUserInitial"
+                                           FontSize="14" FontWeight="Bold"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"/>
+                            </Border>
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock x:Name="TxtUserName" FontSize="12"
+                                           FontWeight="SemiBold" Foreground="White"/>
+                                <TextBlock x:Name="TxtUserRole" FontSize="10"
+                                           Foreground="#8896A8"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Кнопка Вихід внизу -->
+                <Border DockPanel.Dock="Bottom" Padding="0,10"
+                        BorderBrush="{DynamicResource SidebarHover}"
+                        BorderThickness="0,1,0,0">
+                    <Button x:Name="BtnExit"
+                            Content="{DynamicResource m_Exit}"
+                            Style="{StaticResource SidebarButton}"
+                            Click="BtnExit_Click"
+                            Foreground="#FC6D71"/>
+                </Border>
+
+                <!-- Навігація -->
+                <StackPanel Margin="0,16,0,0">
+                    <Button x:Name="BtnCatalog"
+                            Content="{DynamicResource m_Catalog}"
+                            Style="{StaticResource SidebarButtonActive}"
+                            Click="BtnCatalog_Click"/>
+
+                    <Button x:Name="BtnLibrary"
+                            Content="{DynamicResource m_Library}"
+                            Style="{StaticResource SidebarButton}"
+                            Click="BtnLibrary_Click"/>
+
+                    <Button x:Name="BtnSettings"
+                            Content="{DynamicResource m_Settings}"
+                            Style="{StaticResource SidebarButton}"
+                            Click="BtnSettings_Click"/>
+
+                    <Button x:Name="BtnAbout"
+                            Content="{DynamicResource m_About}"
+                            Style="{StaticResource SidebarButton}"
+                            Click="BtnAbout_Click"/>
+
+                    <!-- Адмін-кнопка — тільки для адміністраторів -->
+                    <Button x:Name="BtnAdmin"
+                            Content="{DynamicResource m_Admin}"
+                            Style="{StaticResource SidebarButton}"
+                            Visibility="Collapsed"
+                            Click="BtnAdmin_Click"
+                            Foreground="#F6AD55"/>
+                </StackPanel>
+            </DockPanel>
         </Border>
 
-        <StackPanel DockPanel.Dock="Left" Width="220" Background="#2C3E50">
-            <TextBlock Text="Меню" Foreground="White" FontSize="22" FontWeight="Bold" Margin="20,20,20,30"/>
-
-            <Button Content="Каталог контенту" Height="45" Margin="10,5" Padding="10,0" HorizontalContentAlignment="Left" Click="BtnCatalog_Click"/>
-            <Button Content="Моя бібліотека" Height="45" Margin="10,5" Padding="10,0" HorizontalContentAlignment="Left" Click="BtnLibrary_Click"/>
-            <Button Content="Панель Адміна" Height="45" Margin="10,5" Padding="10,0" HorizontalContentAlignment="Left" Click="BtnAdmin_Click"/>
-
-            <Separator Margin="15,30" Background="#34495E"/>
-            <Button Content="Вихід" Height="45" Margin="10,5" Background="#E74C3C" Foreground="White" Click="BtnExit_Click"/>
-        </StackPanel>
-
-        <Border Background="#F5F6FA" Padding="20">
+        <!-- ===== ОСНОВНИЙ КОНТЕНТ ===== -->
+        <Border Grid.Column="1" Background="{DynamicResource BackgroundColor}" Padding="0">
             <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         </Border>
-
-    </DockPanel>
+    </Grid>
 </Window>
