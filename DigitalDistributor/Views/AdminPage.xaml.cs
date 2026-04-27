@@ -63,7 +63,6 @@ namespace DigitalDistributor.Views
         // Зберегти / Додати
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            // --- Валідація ---
             if (string.IsNullOrWhiteSpace(TxtTitle.Text))
             {
                 ShowError("Назва контенту є обов'язковою!");
@@ -74,7 +73,8 @@ namespace DigitalDistributor.Views
                 ShowError("Жанр є обов'язковим полем.");
                 return;
             }
-            if (!decimal.TryParse(TxtPrice.Text.Replace(".", ","), out decimal price) || price < 0)
+            if (!decimal.TryParse
+            (TxtPrice.Text.Replace(".", ","), out decimal price) || price < 0)
             {
                 ShowError("Ціна повинна бути числом більшим або рівним 0.");
                 return;
@@ -84,14 +84,10 @@ namespace DigitalDistributor.Views
                 ShowError("Оберіть тип контенту.");
                 return;
             }
-
             HideError();
-
             ContentType selectedType = (ContentType)CmbType.SelectedIndex;
-
             if (_selectedContent == null)
             {
-                // --- CREATE ---
                 var newItem = new MediaContent
                 {
                     Title       = TxtTitle.Text.Trim(),
@@ -102,7 +98,7 @@ namespace DigitalDistributor.Views
                 };
                 _contentList.Add(newItem);
                 MessageBox.Show("Новий контент успішно додано!", "Успіх",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -117,8 +113,6 @@ namespace DigitalDistributor.Views
                 MessageBox.Show("Запис успішно оновлено!", "Успіх",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
-            // Зберігаємо у файл
             ContentService.SaveContent(new List<MediaContent>(_contentList));
             ClearForm();
         }
